@@ -1,7 +1,20 @@
 import unittest
 
 def find_equi_index(inArray, numElements):
-	# Find the equilibrium index of input array
+	
+	sum_left = 0
+	sum_right = 0
+	
+	for i in range(numElements):
+		for j in range(i):
+			sum_left += inArray[j]
+		for j in range(i + 1, numElements):
+			sum_right += inArray[j]
+		if sum_left == sum_right:
+			return i
+		sum_left = 0
+		sum_right = 0
+		
 	return -1
 
 class TestEquiIndex(unittest.TestCase):
